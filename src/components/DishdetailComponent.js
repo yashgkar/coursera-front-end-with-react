@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardBody, CardText, CardTitle } from "reactstrap";
+import { Card, CardImg, CardBody, CardText, CardTitle, CardImgOverlay, Button } from "reactstrap";
 
 
 class DishDetail extends Component {
@@ -19,6 +19,12 @@ class DishDetail extends Component {
                         <div className='col-12 col-md-5 m-1'>
                             <Card>
                                 <CardImg width="100%" src={dish.image} alt={dish.name} />
+                                <CardImgOverlay>
+                                    <CardTitle>
+                                        <Button close onClick={() => this.props.onRemove()} />
+                                    </CardTitle>
+                                </CardImgOverlay>
+
                                 <CardBody>
                                     <CardTitle>{dish.name}</CardTitle>
                                     <CardText>{dish.description}</CardText>
