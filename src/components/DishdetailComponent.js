@@ -1,6 +1,5 @@
 import React from 'react';
-import { Card, CardImg, CardBody, CardText, CardTitle, CardImgOverlay, Breadcrumb, BreadcrumbItem } from "reactstrap";
-import { X } from "react-bootstrap-icons";
+import { Card, CardImg, CardBody, CardText, CardTitle, Breadcrumb, BreadcrumbItem } from "reactstrap";
 import { Link } from "react-router-dom";
 
 

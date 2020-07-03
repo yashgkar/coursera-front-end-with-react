@@ -27,10 +27,6 @@ class Main extends Component {
 		this.setState({ selectedDish: dishId });
 	}
 
-	removeDish() {
-		this.setState({ selectedDish: null });
-	}
-
 	render() {
 
 		const HomePage = () => {
