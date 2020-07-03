@@ -4,7 +4,7 @@ import { X } from "react-bootstrap-icons";
 
 
 
-function RenderDish({ dish, onRemove }) {
+function RenderDish({ dish, onRemove, comments }) {
   if (dish != null) {
     return (
       <div>
@@ -25,7 +25,8 @@ function RenderDish({ dish, onRemove }) {
           </div>
           <div className='col-12 col-md-5 m-1'>
             <h4>Comments</h4>
-            <RenderComments comments={dish.comments} />
+            {comments ? <RenderComments comments={comments} /> : null}
+
           </div>
         </div>
       </div>
@@ -66,7 +67,7 @@ const DishDetail = (props) => {
   return (
     <div className="container">
       <div className="row">
-        <RenderDish dish={props.dish} onRemove={props.onRemove} />
+        <RenderDish dish={props.dish} onRemove={props.onRemove} comments={props.comments}/>
       </div>
     </div>
   );
