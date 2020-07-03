@@ -42,15 +42,18 @@ class Main extends Component {
 			);
 		}
 
+		const DishWithId = ({ match }) => {
+			return (
+				<DishDetail dish={this.state.dishes.filter(c => c.id === parseInt(match.params.id, 10))[0]}
+					comments={this.state.comments.filter(c => c.dishId === parseInt(match.params.id, 10))}
+				/>
+			)
+		}
+
 		const MenuandDetails = () => {
 			return (
 				<div>
-					<Menu dishes={this.state.dishes}
-						onClick={(dishId) => this.onDishSelect(dishId)} />
-					< DishDetail dish={this.state.dishes.filter((dish) => dish.id === this.state.selectedDish)[0]}
-						onRemove={() => this.removeDish()}
-						// {...console.log(this.state.comments.filter((comment) => comment.dishId === this.state.selectedDish))}
-						comments={this.state.comments.filter((comment) => comment.dishId === this.state.selectedDish)} />
+					<Menu dishes={this.state.dishes} />
 				</div >
 			);
 		}
@@ -61,6 +64,7 @@ class Main extends Component {
 				<Switch>
 					<Route path="/home" component={HomePage} />
 					<Route exact path="/menu" component={MenuandDetails} />
+					<Route path="/menu/:id" component={DishWithId} />
 					<Route exact path="/contactus" component={Contact} />
 					<Redirect to="/home" />
 				</Switch>

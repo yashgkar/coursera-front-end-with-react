@@ -1,22 +1,29 @@
 import React from 'react';
-import { Card, CardImg, CardBody, CardText, CardTitle, CardImgOverlay } from "reactstrap";
+import { Card, CardImg, CardBody, CardText, CardTitle, CardImgOverlay, Breadcrumb, BreadcrumbItem } from "reactstrap";
 import { X } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 
 
 
-function RenderDish({ dish, onRemove, comments }) {
+function RenderDish({ dish, comments }) {
   if (dish != null) {
     return (
       <div>
+        <div className="row">
+          <Breadcrumb>
+            <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
+            <BreadcrumbItem active>{dish.name}</BreadcrumbItem>
+          </Breadcrumb>
+          <div className="col-12">
+            <h3>{dish.name}</h3>
+            <hr />
+          </div>
+        </div>
+
         <div className='row'>
           <div className='col-12 col-md-5 m-1'>
             <Card>
               <CardImg width="100%" src={dish.image} alt={dish.name} />
-              <CardImgOverlay>
-                <CardTitle>
-                  <X size={25} onClick={onRemove} />
-                </CardTitle>
-              </CardImgOverlay>
               <CardBody>
                 <CardTitle>{dish.name}</CardTitle>
                 <CardText>{dish.description}</CardText>
@@ -25,7 +32,7 @@ function RenderDish({ dish, onRemove, comments }) {
           </div>
           <div className='col-12 col-md-5 m-1'>
             <h4>Comments</h4>
-            {comments ? <RenderComments comments={comments} /> : null}
+            <RenderComments comments={comments} />
 
           </div>
         </div>
@@ -67,7 +74,7 @@ const DishDetail = (props) => {
   return (
     <div className="container">
       <div className="row">
-        <RenderDish dish={props.dish} onRemove={props.onRemove} comments={props.comments}/>
+        <RenderDish dish={props.dish} comments={props.comments} />
       </div>
     </div>
   );
