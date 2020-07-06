@@ -47,22 +47,6 @@ class Main extends Component {
 			)
 		}
 
-		const MenuandDetails = () => {
-			return (
-				<div>
-					<Menu dishes={this.state.dishes} />
-				</div >
-			);
-		}
-
-		const AboutUs = () => {
-			return (
-				<div>
-					<About leaders={this.state.leaders} />
-				</div>
-			)
-		}
-
 		return (
 			<div>
 				<Header />
